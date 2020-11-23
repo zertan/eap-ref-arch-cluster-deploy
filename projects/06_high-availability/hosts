@@ -1,2 +1,14 @@
 [hosts]
 localhost   ansible_connection=local
+192.168.22.5
+192.168.22.7
+
+[application_servers]
+192.168.22.5
+localhost
+
+[loadbalancer_servers]
+192.168.22.7
+
+[domain_controller]
+localhost

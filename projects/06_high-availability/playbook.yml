@@ -1,6 +1,10 @@
 ---
 # This playbook deploys JBoss servers.
 
-- hosts: localhost
+- hosts: all
   roles:
     - jboss-eap-7
+
+- hosts: domain_controller
+  roles:
+    - domain-controller

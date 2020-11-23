@@ -1,0 +1,4 @@
+---
+
+- name: Create admin user for JBoss
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/add-user.sh -u admin -p {{ jboss_admin_password }} -s"

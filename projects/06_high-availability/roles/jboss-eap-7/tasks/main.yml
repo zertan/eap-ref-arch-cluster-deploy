@@ -1,18 +1,10 @@
 ---
 
+- name: Ensure {{jboss_zip_dir}} dir exists
+  file: path={{jboss_zip_dir}} state=directory
+
+#- name: Copy JBoss EAP to all
+#  copy: src={{jboss_zip_path}} dest={{jboss_zip_path}}
+
 - name: Extract JBoss EAP 7
-  unarchive: src={{jboss_zip_path}} dest={{ ansible_user_dir }} owner={{jboss_user}} group={{jboss_group}} creates={{jboss_home}} copy=no
-
-- name: Create admin user for JBoss
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/add-user.sh -u admin -p {{ jboss_admin_password }} -s"
-
-- name: Add demo application
-  copy: src={{item}} dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
-  with_items:
-    - clustering-demo.war
-
-- name: Add CLI configuration script
-  template: src=mod-cluster.cli dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
-
-- name: Apply configuration
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/jboss-cli.sh --file={{ ansible_user_dir }}/mod-cluster.cli"
+  unarchive: src={{jboss_zip_path}} dest={{ ansible_user_dir }} owner={{jboss_user}} group={{jboss_group}} creates={{jboss_home}} remote_src=yes
