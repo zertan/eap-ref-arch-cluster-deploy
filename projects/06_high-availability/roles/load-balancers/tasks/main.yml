@@ -1,0 +1,10 @@
+---
+
+- name: Ensure {{jboss_webserver_zip_dir}} dir exists
+  file: path={{jboss_webserver_zip_dir}} state=directory
+
+- name: Copy JBoss Webserver to load balancers
+  copy: src={{jboss_webserver_zip_path}} dest={{jboss_webserver_zip_path}}
+
+- name: Extract JBoss Webserver
+  unarchive: src={{jboss_webserver_zip_path}} dest={{ ansible_user_dir }} owner={{jboss_user}} group={{jboss_group}} creates={{jboss_home}} remote_src=yes

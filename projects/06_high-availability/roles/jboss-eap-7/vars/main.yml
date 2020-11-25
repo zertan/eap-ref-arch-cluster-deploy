@@ -1,10 +1,10 @@
 ---
 eap_name: jboss-eap
-eap_minor_version: 7.0
-eap_version: 7.0.0
-jboss_home: "{{ansible_user_dir}}/wildfly-21.0.1.Final"
+eap_minor_version: 7.3
+eap_version: 7.3.0
+jboss_home: "{{ansible_user_dir}}/jboss-eap-7.3"
 jboss_admin_password: admin-123
 jboss_user: jboss
 jboss_group: jboss
 jboss_zip_dir: "{{ansible_user_dir}}/software"
-jboss_zip_path: "{{ansible_user_dir}}/software/jboss-eap-7.0.0.zip"
+jboss_zip_path: "{{ansible_user_dir}}/software/jboss-eap-7.3.0.zip"

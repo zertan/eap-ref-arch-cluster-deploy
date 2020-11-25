@@ -9,13 +9,13 @@ if (outcome==failed) of /host=master/server-config=load-balancer:read-resource
     #/server-group=other-server-group:remove
 
     # Clone the HA profile to a new profile called backend.
-   # /profile=ha:clone(to-profile=backend)
+    #/profile=ha:clone(to-profile=backend)
 
     # Clone the default profile to be used for load-balancer profile
-  #  /profile=default:clone(to-profile=load-balancer)
+    # /profile=default:clone(to-profile=load-balancer)
 
     # Configure the modcluster subsystem in the backend profile to use an advertise security key set to "mypassword"
-    /profile=backend/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
+     /profile=backend/subsystem=modcluster/mod-cluster-config=configuration:write-attribute(name=advertise-security-key, value=mypassword)
 
     # Adding the mod-cluster filter to the undertow subsystem and configuring the advertise security key to "mypassword"
     /profile=load-balancer/subsystem=undertow/configuration=filter/mod-cluster=modcluster:add(management-socket-binding=http, advertise-socket-binding=modcluster, security-key=mypassword)
