@@ -1,9 +1,13 @@
 ---
 
+- name: Add the user 'jboss'
+  user:
+    name: jboss
+
 - name: Ensure {{jboss_zip_dir}} dir exists
   file: path={{jboss_zip_dir}} state=directory
 
-- name: Copy JBoss EAP to all
+- name: Copy JBoss EAP
   copy: src={{jboss_zip_path}} dest={{jboss_zip_path}}
 
 - name: Extract JBoss EAP 7

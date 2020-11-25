@@ -1,0 +1,9 @@
+---
+  - name: install httpd.conf
+    template: src=httpd.conf dest={{ jboss_webserver_home }}/conf/ owner={{ jboss_user }} group={{ jboss_group }} mode=644
+
+  - name: install mod_cluster.conf
+    template: src=mod_cluster.conf dest={{ jboss_webserver_home }}/conf/ owner={{ jboss_user }} group={{ jboss_group }} mode=644
+
+  - name: install extranet_vhost.conf
+    template: src=extranet_vhost.conf dest={{ jboss_webserver_home }}/conf/ owner={{ jboss_user }} group={{ jboss_group }} mode=644

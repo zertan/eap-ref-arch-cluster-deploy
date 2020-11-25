@@ -1,0 +1,54 @@
+---
+#  - name: Ensure {{jboss_zip_dir}} dir exists
+#    file: path={{jboss_zip_dir}} state=directory
+
+#  - name: Copy JBoss Webserver zip
+#    copy: src={{jboss_webserver_zip_path}} dest={{jboss_webserver_zip_path}}
+
+- name: Install prereq pkgs
+  yum:
+    name:
+      - apr
+      - apr-devel
+      - apr-util
+      - apr-util-devel
+      - apr-util-ldap
+      - elinks
+      - krb5-workstation
+    state: present
+
+- name:  Add the apache group
+  group:
+    name: apache
+    state: present
+    gid: 48
+
+- name: Add the apache user
+  user:
+    name: apache
+    comment: "Apache"
+    group: apache
+
+- name: Ensure httpd root dir exists
+  file: path={{httpd_root_dir}} state=directory
+
+- name: Extract JBoss Webserver
+  unarchive: 
+    src: "{{jboss_webserver_zip_path}}"
+    dest: "{{httpd_root_dir}}"
+    owner: apache
+    group: apache
+   
+- name: postinstall script
+  become: yes
+  become_user: apache
+  shell: "cd {{jboss_webserver_home}} && ./.postinstall"
+
+#- name:
+#  file:
+#    path: {{httpd_root_dir}}
+#    state: directory
+#    recurse: yes
+#    owner: apache
+
+

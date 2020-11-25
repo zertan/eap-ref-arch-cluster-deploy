@@ -1,0 +1,7 @@
+---
+jboss_user: jboss
+jboss_group: jboss
+jboss_zip_dir: "{{ansible_user_dir}}/software"
+jboss_webserver_zip_path: "{{ansible_user_dir}}/software/jbcs-httpd24-httpd-2.4.37-RHEL7-x86_64.zip"
+httpd_root_dir: "/opt/rh/httpd"
+jboss_webserver_home: "{{httpd_root_dir}}/jbcs-httpd24-2.4/httpd"

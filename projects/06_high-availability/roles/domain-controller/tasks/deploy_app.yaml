@@ -1,0 +1,7 @@
+---
+
+- name: Add demo application
+  tags: deploy-app
+  copy: src={{item}} dest={{ ansible_user_dir }} owner={{ jboss_user }} group={{ jboss_group }} mode=644
+  with_items:
+    - clustering-demo.war

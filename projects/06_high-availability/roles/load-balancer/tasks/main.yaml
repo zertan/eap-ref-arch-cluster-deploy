@@ -1,0 +1,13 @@
+- name: Install
+  import_tasks: install.yml
+  tags: [install]
+
+- name: Configure
+  import_tasks: configure.yml
+  tags: [configure]
+
+- name: Start
+  import_tasks: start.yml
+  tags: [start]
+
+
