@@ -1,0 +1,19 @@
+---
+
+- name: install host_slave
+  template: src=host-slave.xml dest={{ jboss_home }}/domain/configuration/ owner={{ jboss_user }} group={{ jboss_group }} mode=644
+
+- name: install domain_slave
+  template: src=domain.xml dest={{ jboss_home }}/domain/configuration/domain-slave.xml owner={{ jboss_user }} group={{ jboss_group }} mode=644
+
+- name: open ports
+  ansible.posix.firewalld: port={{ item }}/tcp permanent=yes state=enabled
+  loop:
+     - 9990
+     - 9999
+     - 7600
+
+- name: open ports
+  ansible.posix.firewalld: port={{ item }}/udp permanent=yes state=enabled
+  loop:
+     - 23364

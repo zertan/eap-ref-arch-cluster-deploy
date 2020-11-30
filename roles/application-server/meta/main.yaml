@@ -1,0 +1,5 @@
+#---
+#
+#dependencies:
+#  - hosts: domain_controller
+#    role: domain-controller

@@ -1,4 +1,4 @@
 ---
 
 - name: Start domain
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/domain.sh -Djboss.domain.base.dir={{ jboss_home }}/domain --host-file=host-slave.xml"
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/domain.sh --host-config=host-slave.xml -Djboss.domain.master.address=192.168.22.6"

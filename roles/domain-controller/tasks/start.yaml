@@ -2,4 +2,4 @@
 
 - name: Start domain
   tags: start
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/domain.sh --file={{ ansible_user_dir }}/mod-cluster.cli"
+  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/domain.sh --host-config=host-master.xml -Djboss.bind.address.management={{ domain_controller_address }}"

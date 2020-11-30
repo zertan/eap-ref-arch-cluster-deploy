@@ -1,8 +1,11 @@
 [hosts]
-ap1   ansible_connection=local
-ap2 ansible_host=192.168.22.5
-lb1 ansible_host=192.168.22.7
-lb2 ansible_host=192.168.22.8
+ap1 host_name=ap1 ansible_connection=local
+ap2 host_name=ap2 ansible_host=192.168.22.5
+lb1 host_name=lb1 ansible_host=192.168.22.7
+lb2 host_name=lb2 ansible_host=192.168.22.8
+
+[hosts:vars]
+domain_controller_address=192.168.22.6
 
 [application_servers]
 ap1
@@ -13,4 +16,4 @@ lb1
 lb2
 
 [domain_controller]
-lb1
+ap1
