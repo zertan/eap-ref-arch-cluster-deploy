@@ -1,7 +1,7 @@
 ---
 
 - name: Stop domain
-  shell: "export JBOSS_HOME={{ jboss_home }}; ${JBOSS_HOME}/bin/jboss-cli.sh --connect --controller=localhost:9999 command=/host={{ hostname_shutdown }}:shutdown  --user=admin --password={{ jboss_admin_password }}"
+  shell: "export JBOSS_HOME={{ jboss_home }}; ${JBOSS_HOME}/bin/jboss-cli.sh --connect --controller={{ domain_controller_address }}:9999 command=/host={{ item }}:shutdown  --user=admin --password={{ jboss_admin_password }}"
   loop:
     - ap1
     - ap2

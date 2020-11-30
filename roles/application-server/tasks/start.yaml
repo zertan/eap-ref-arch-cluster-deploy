@@ -1,4 +1,4 @@
 ---
 
 - name: Start domain
-  shell: "export JBOSS_HOME={{ jboss_home }}; {{ jboss_home }}/bin/domain.sh --host-config=host-slave.xml -c=domain-slave.xml -Djboss.domain.master.address={{ domain_controller_address }}"
+  shell: "export JBOSS_HOME={{ jboss_home }}; nohup ${JBOSS_HOME}/bin/domain.sh --host-config=host-slave.xml -c=domain-slave.xml -Djboss.domain.master.address={{ domain_controller_address }} -Djboss.bind.address={{ ansible_host }} 2>&1 &"
